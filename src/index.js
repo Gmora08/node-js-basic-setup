@@ -2,24 +2,24 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import pino from 'pino';
 import expressPino from 'express-pino-logger';
 
-import { port, log_level } from './config';
+import { logger } from './utils/logger';
+import { port } from './config';
+import router from './routes';
 
-const logger = pino({level: log_level || 'info'});
 const expressLogger = expressPino({ logger });
 
 const app = express();
 app.use(helmet());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cors());
 app.use(expressLogger);
+app.use(router);
 
-app.get('/', (req, res) => {
-  logger.debug('Calling res.send')
-  res.send('Hello World')
-})
 
 app.listen(port, () => {
   logger.info('Server running on port %d', port)
