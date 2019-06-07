@@ -1,1 +1,2 @@
-console.log('Hello Node.js project.');
+import { port } from './config';
+console.log(`Hello Node.js project. ${port}`);
