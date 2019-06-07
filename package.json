@@ -5,7 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js | pino-colada",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint 'src/**/*.js' --fix",
+    "format": "prettier-eslint 'server/**/*.{js,json}' --write"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "author": "gmora08",
   "license": "ISC",
@@ -14,9 +28,16 @@
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-promise": "^4.1.1",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
     "nodemon": "^1.19.1",
     "pino-colada": "^1.4.4",
-    "pino-pretty": "^3.1.0"
+    "pino-pretty": "^3.1.0",
+    "prettier-eslint-cli": "^4.7.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

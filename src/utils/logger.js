@@ -1,7 +1,7 @@
 import pino from 'pino';
 
-import { log_level } from '../config';
+import { logLevel } from '../config';
 
 module.exports = {
-  logger: pino({level: log_level || 'info'}),
-}
+  logger: pino({ level: logLevel || 'info' }),
+};
