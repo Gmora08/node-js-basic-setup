@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js | pino-colada",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest src/tests",
     "lint": "eslint 'src/**/*.js' --fix",
-    "format": "prettier-eslint 'server/**/*.{js,json}' --write"
+    "format": "prettier-eslint 'server/**/*.{js,json}' --write",
+    "coverage": "jest --collectCoverageFrom=src/**.js --collectCoverageFrom=!src/index.js --coverage src"
   },
   "lint-staged": {
     "**/*.js": [
@@ -31,13 +32,17 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
     "eslint-plugin-promise": "^4.1.1",
     "husky": "^2.4.0",
+    "jest": "^24.8.0",
     "lint-staged": "^8.2.0",
     "nodemon": "^1.19.1",
     "pino-colada": "^1.4.4",
     "pino-pretty": "^3.1.0",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^4.7.1",
+    "superagent": "^5.0.6",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
