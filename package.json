@@ -51,6 +51,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "helmet": "^3.18.0",
+    "mssql": "^5.1.0",
     "pino": "^5.12.6",
     "urlencode": "^1.1.0"
   }
